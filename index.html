@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Code Space</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <h1>My Code Space</h1>
+        <p>My personal collection of code snippets</p>
+    </header>
+
+    <main class="container">
+
+        <!-- CODE SECTION 1 -->
+        <section class="code-card">
+            <div class="card-header">
+                <div>
+                    <h2> Practical 1: Exploratory Data Analysis (EDA) - I
+                        <br>Aim: To calculate descriptive statistics.
+                    </h2>
+                </div>
+
+                <button class="copy-btn" onclick="copyCode('code1', this)">
+                    Copy Code
+                </button>
+            </div>
+
+            <pre><code id="code1">
+import numpy as np
+import pandas as pd
+                
+data = [10, 20, 30, 40, 50]
+                
+print("Mean:", np.mean(data))
+print("Median:", np.median(data))
+print("Mode:", pd.Series(data).mode().tolist())
+print("Variance:", np.var(data))
+print("Standard Deviation:", np.std(data))
+print("Minimum:", np.min(data))
+print("Maximum:", np.max(data))
+            </code></pre>
+
+            <div class="card-footer">
+                <span>SMD_1.pdf</span>
+                <span id="count1">0 characters</span>
+            </div>
+        </section>
+
+
+        <!-- CODE SECTION 2 -->
+        <section class="code-card">
+            <div class="card-header">
+                <div>
+                    <h2>Practical 14: Maximum Likelihood Estimation (MLE) - I
+                        <br>Aim: To estimate mean and variance using MLE.
+                    </h2>
+                </div>
+
+                <button class="copy-btn" onclick="copyCode('code2', this)">
+                    Copy Code
+                </button>
+            </div>
+
+            <pre><code id="code2">
+import numpy as np
+                
+data = np.array([50, 60, 70, 80, 90])
+                
+mean = np.mean(data)
+variance = np.var(data, ddof=0)
+std = np.sqrt(variance)
+                
+print("MLE Mean:", mean)
+print("MLE Variance:", variance)
+print("MLE Standard Deviation:", round(std, 2))
+            </code></pre>
+
+            <div class="card-footer">
+                <span> SMD_14.pdf</span>
+                <span id="count2">0 characters</span>
+            </div>
+        </section>
+
+
+        <!-- CODE SECTION 3 -->
+        <section class="code-card">
+            <div class="card-header">
+                <div>
+                    <h2>Practical 18: Regularized Regression
+                        <br>Aim: To implement Ridge, Lasso, and Elastic Net regression.
+                    </h2>
+                </div>
+
+                <button class="copy-btn" onclick="copyCode('code3', this)">
+                    Copy Code
+                </button>
+            </div>
+
+            <pre><code id="code3">
+import numpy as np
+from sklearn.linear_model import Ridge, Lasso, ElasticNet
+
+X = np.array([[1], [2], [3], [4], [5]])
+y = np.array([2, 4, 5, 4, 5])
+
+models = {
+    "Ridge": Ridge(alpha=1.0),
+    "Lasso": Lasso(alpha=0.1),
+    "Elastic Net": ElasticNet(alpha=0.1, l1_ratio=0.5)
+}
+
+for name, model in models.items():
+    model.fit(X, y)
+    prediction = model.predict([[6]])
+    print(name, "Prediction:", round(prediction[0], 2))
+            </code></pre>
+
+            <div class="card-footer">
+                <span> SMD_18.pdf</span>
+                <span id="count3">0 characters</span>
+            </div>
+        </section>
+
+
+        <!-- ADD MORE CODE SECTIONS BY COPYING A SECTION ABOVE -->
+
+    </main>
+
+    <footer>
+        <p>My Code Space © 2026</p>
+    </footer>
+
+    <script>
+        // Copy code button
+        async function copyCode(codeId, button) {
+            const code = document.getElementById(codeId).textContent;
+
+            try {
+                await navigator.clipboard.writeText(code);
+            } catch (error) {
+                const textarea = document.createElement("textarea");
+                textarea.value = code;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand("copy");
+                textarea.remove();
+            }
+
+            button.textContent = "Copied ✓";
+
+            setTimeout(() => {
+                button.textContent = "Copy Code";
+            }, 1500);
+        }
+
+        // Character counters
+        function updateCounters() {
+            for (let i = 1; i <= 3; i++) {
+                const code = document.getElementById("code" + i);
+                const counter = document.getElementById("count" + i);
+
+                if (code && counter) {
+                    counter.textContent =
+                        code.textContent.length + " characters";
+                }
+            }
+        }
+
+        updateCounters();
+    </script>
+
+</body>
+
+</html>
