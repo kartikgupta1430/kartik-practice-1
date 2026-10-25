@@ -1,15 +1,164 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Code Space</title>
-    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0b0e14;
+            color: #e5e7eb;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .header {
+            text-align: center;
+            padding: 45px 20px;
+            border-bottom: 1px solid #252a36;
+            background: #10141d;
+        }
+
+        .header h1 {
+            font-size: 34px;
+            color: #a78bfa;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 35px auto;
+        }
+
+        .code-card {
+            background: #131720;
+            border: 1px solid #292f3d;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+
+        .code-card:hover {
+            border-color: #8b5cf6;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            border-bottom: 1px solid #292f3d;
+        }
+
+        .card-header h2 {
+            font-size: 17px;
+            margin-top: 8px;
+        }
+
+        .copy-btn {
+            background: #8b5cf6;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            background: #7c3aed;
+        }
+
+        pre {
+            padding: 22px;
+            overflow-x: auto;
+            background: #0e1118;
+        }
+
+        code {
+            color: #c4d4f5;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 13px;
+            white-space: pre;
+            line-height: 1.8;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 12px 20px;
+            color: #9ca3af;
+            font-size: 11px;
+            border-top: 1px solid #292f3d;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #6b7280;
+            border-top: 1px solid #252a36;
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 27px;
+            }
+
+            .container {
+                width: 94%;
+                margin: 20px auto;
+            }
+
+            .card-header {
+                padding: 15px;
+                align-items: flex-start;
+            }
+
+            .card-header h2 {
+                font-size: 14px;
+            }
+
+            .copy-btn {
+                padding: 9px 10px;
+                font-size: 11px;
+            }
+
+            pre {
+                padding: 15px;
+            }
+
+            code {
+                font-size: 12px;
+            }
+
+            .card-footer {
+                padding: 11px 15px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-
     <header class="header">
         <h1>My Code Space</h1>
         <p>My personal collection of code snippets</p>
@@ -17,34 +166,29 @@
 
     <main class="container">
 
-        <!-- CODE SECTION 1 -->
         <section class="code-card">
             <div class="card-header">
-                <div>
-                    <h2> Practical 1: Exploratory Data Analysis (EDA) - I
-                        <br>Aim: To calculate descriptive statistics.
-                    </h2>
-                </div>
-
+                <h2>
+                    Practical 1: Exploratory Data Analysis (EDA) - I
+                    <br>Aim: To calculate descriptive statistics.
+                </h2>
                 <button class="copy-btn" onclick="copyCode('code1', this)">
                     Copy Code
                 </button>
             </div>
 
-            <pre><code id="code1">
-import numpy as np
+            <pre><code id="code1">import numpy as np
 import pandas as pd
-                
+
 data = [10, 20, 30, 40, 50]
-                
+
 print("Mean:", np.mean(data))
 print("Median:", np.median(data))
 print("Mode:", pd.Series(data).mode().tolist())
 print("Variance:", np.var(data))
 print("Standard Deviation:", np.std(data))
 print("Minimum:", np.min(data))
-print("Maximum:", np.max(data))
-            </code></pre>
+print("Maximum:", np.max(data))</code></pre>
 
             <div class="card-footer">
                 <span>SMD_1.pdf</span>
@@ -52,58 +196,47 @@ print("Maximum:", np.max(data))
             </div>
         </section>
 
-
-        <!-- CODE SECTION 2 -->
         <section class="code-card">
             <div class="card-header">
-                <div>
-                    <h2>Practical 14: Maximum Likelihood Estimation (MLE) - I
-                        <br>Aim: To estimate mean and variance using MLE.
-                    </h2>
-                </div>
-
+                <h2>
+                    Practical 14: Maximum Likelihood Estimation (MLE) - I
+                    <br>Aim: To estimate mean and variance using MLE.
+                </h2>
                 <button class="copy-btn" onclick="copyCode('code2', this)">
                     Copy Code
                 </button>
             </div>
 
-            <pre><code id="code2">
-import numpy as np
-                
+            <pre><code id="code2">import numpy as np
+
 data = np.array([50, 60, 70, 80, 90])
-                
+
 mean = np.mean(data)
 variance = np.var(data, ddof=0)
 std = np.sqrt(variance)
-                
+
 print("MLE Mean:", mean)
 print("MLE Variance:", variance)
-print("MLE Standard Deviation:", round(std, 2))
-            </code></pre>
+print("MLE Standard Deviation:", round(std, 2))</code></pre>
 
             <div class="card-footer">
-                <span> SMD_14.pdf</span>
+                <span>SMD_14.pdf</span>
                 <span id="count2">0 characters</span>
             </div>
         </section>
 
-
-        <!-- CODE SECTION 3 -->
         <section class="code-card">
             <div class="card-header">
-                <div>
-                    <h2>Practical 18: Regularized Regression
-                        <br>Aim: To implement Ridge, Lasso, and Elastic Net regression.
-                    </h2>
-                </div>
-
+                <h2>
+                    Practical 18: Regularized Regression
+                    <br>Aim: To implement Ridge, Lasso, and Elastic Net regression.
+                </h2>
                 <button class="copy-btn" onclick="copyCode('code3', this)">
                     Copy Code
                 </button>
             </div>
 
-            <pre><code id="code3">
-import numpy as np
+            <pre><code id="code3">import numpy as np
 from sklearn.linear_model import Ridge, Lasso, ElasticNet
 
 X = np.array([[1], [2], [3], [4], [5]])
@@ -118,17 +251,13 @@ models = {
 for name, model in models.items():
     model.fit(X, y)
     prediction = model.predict([[6]])
-    print(name, "Prediction:", round(prediction[0], 2))
-            </code></pre>
+    print(name, "Prediction:", round(prediction[0], 2))</code></pre>
 
             <div class="card-footer">
-                <span> SMD_18.pdf</span>
+                <span>SMD_18.pdf</span>
                 <span id="count3">0 characters</span>
             </div>
         </section>
-
-
-        <!-- ADD MORE CODE SECTIONS BY COPYING A SECTION ABOVE -->
 
     </main>
 
@@ -137,7 +266,6 @@ for name, model in models.items():
     </footer>
 
     <script>
-        // Copy code button
         async function copyCode(codeId, button) {
             const code = document.getElementById(codeId).textContent;
 
@@ -159,7 +287,6 @@ for name, model in models.items():
             }, 1500);
         }
 
-        // Character counters
         function updateCounters() {
             for (let i = 1; i <= 3; i++) {
                 const code = document.getElementById("code" + i);
@@ -174,7 +301,5 @@ for name, model in models.items():
 
         updateCounters();
     </script>
-
 </body>
-
 </html>
